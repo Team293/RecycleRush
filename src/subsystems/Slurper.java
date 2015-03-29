@@ -32,7 +32,7 @@ public class Slurper {
 		SmartDashboard.putBoolean("lfLimit", lfLimit.get());
 		SmartDashboard.putBoolean("rfLimit", rfLimit.get());
 		SmartDashboard.putBoolean("lOpticalLimit", lOpticalLimit.get());
-		SmartDashboard.putBoolean("rOpticalLimit", !rOpticalLimit.get());
+		SmartDashboard.putBoolean("rOpticalLimit", rOpticalLimit.get());
 		SmartDashboard.putBoolean("lToteLimit", lToteLimit.get());
 		SmartDashboard.putBoolean("rToteLimit", rToteLimit.get());
 	}
@@ -109,7 +109,7 @@ public class Slurper {
 		double rSpeed = stop;
 
 		//if releasing a stack, go forwards
-		if (Elevator.getTargetPosition() < Elevator.positions[1]) {
+		if (Elevator.getTargetPosition() < Elevator.positions[0]) {
 			lSpeed = forward;
 			rSpeed = forward;
 		} else {
@@ -124,7 +124,7 @@ public class Slurper {
 			//same stuff for the right side
 			if (isHalfIn() && !rbLimit.get()) {
 				rSpeed = reverse;
-			} else if (!lbLimit.get() && !rbLimit.get()) {
+			} else if (!lOpticalLimit.get() && !rOpticalLimit.get()) {
 				rSpeed = forward;
 			}
 		}
