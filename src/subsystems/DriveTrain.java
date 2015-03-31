@@ -13,6 +13,7 @@ import edu.wpi.first.wpilibj.RobotDrive;
 public class DriveTrain {    
     private static final VictorSP leftMotor = new VictorSP(Ports.leftDrive);
     private static final VictorSP rightMotor = new VictorSP(Ports.rightDrive);
+
     //private static final Encoder leftEncoder = new Encoder(Ports.leftDriveEncoder1, Ports.leftDriveEncoder2);
     //private static final Encoder rightEncoder = new Encoder(Ports.rightDriveEncoder1, Ports.rightDriveEncoder2);
     public static final RobotDrive drive = new RobotDrive(leftMotor, rightMotor);
@@ -28,6 +29,9 @@ public class DriveTrain {
 	static double averageencoder;
 	static int count;
     //finish
+
+    
+
     public static void tankDrive(double leftSpeed, double rightSpeed) {
 		drive.tankDrive(leftSpeed, rightSpeed);
 	}
@@ -36,12 +40,14 @@ public class DriveTrain {
     	drive.tankDrive(leftSpeed * 0.5, rightSpeed * 0.5);
     }
 	
-	public static void skidControl(double leftInput, double rightInput) {
-		
-	}
-	
 	public static void arcadeDrive(double move, double rotate) {
 		drive.arcadeDrive(move, rotate);
+	}
+	
+	public static void gyroDrive(double setAngle, double speed) {
+		double error = setAngle - gyro.getAngle();
+		double difference = error * .02;
+		tankDrive(speed - difference, speed + difference);
 	}
 	
 	public static void stop() {

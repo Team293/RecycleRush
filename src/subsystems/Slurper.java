@@ -36,10 +36,6 @@ public class Slurper {
 		SmartDashboard.putBoolean("lToteLimit", lToteLimit.get());
 		SmartDashboard.putBoolean("rToteLimit", rToteLimit.get());
 	}
-	public static void rawMove(double speed) {
-		lFinger.set(-speed);
-		rFinger.set(-speed);
-	}
 	
 	public static void move(double lSpeed, double rSpeed) {
 		//prevents from going through limits
