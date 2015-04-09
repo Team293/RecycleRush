@@ -81,7 +81,6 @@ public class OI {
 	public static void controlElevator() {
 		lStrip.setOutput(Slurper.lToteLimit.get());
 		rStrip.setOutput(Slurper.rToteLimit.get());
-		Slurper.display();
 		elevatorUpB.setOutput(elevatorUpB.isHeld());
 		elevatorDownB.setOutput(elevatorDownB.isHeld());
 		if (softNob.get() < 0) {
@@ -126,5 +125,4 @@ public class OI {
 	public static void controlPDP() {
 		PDP.monitor();
 	}
-
 }

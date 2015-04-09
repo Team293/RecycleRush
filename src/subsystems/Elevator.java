@@ -21,7 +21,7 @@ public class Elevator {
 	private static final double ONETOTE = 15.75;
 	private static final double CANONTOTE = 20;
 	private static final double TWOTOTE = 28;
-	private static final double CANONTWOTOTE = 31;
+	private static final double CANONTWOTOTE = 29.5;
 	private static final double MAX = 31.9;
 	public static double[] positions = new double[] {PICKUP, TRAVEL, ONETOTE, CANONTOTE, TWOTOTE, CANONTWOTOTE};
 	private static double kP = 1.19;

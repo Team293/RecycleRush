@@ -11,9 +11,6 @@ public class Ports {
 	//rightjoystick
 	trigger = 1,
 
-	//leftjoystick
-	canOn2TotesB = 7,
-
 	//launchpad
 	lever = 11,
 	toggleSlurperBInput = 4,
@@ -40,9 +37,6 @@ public class Ports {
 	elevator5BOutput = 6,
 
 	nobA = 6,
-	
-	arm0B = 8,
-	arm1B = 9,
 
 	//Elevator
 	elevatorEncoder1 = 4,
@@ -52,17 +46,17 @@ public class Ports {
 	//Slurpers
 	lbLimit = 12,
 	rbLimit = 10,
-	lfLimit = 11, //EDITED FROM 2
-	rfLimit = 13,  //EDITED FROM 0
-	lOpticalLimit = 14,//EDITED FROM 3
-	rOpticalLimit = 15,//EDITED FROM 1
+	lfLimit = 2, //EDITED FROM 2
+	rfLimit = 0,  //EDITED FROM 0
+	lOpticalLimit = 3,//EDITED FROM 3
+	rOpticalLimit = 1,//EDITED FROM 1
 	lToteLimit = 6,
 	rToteLimit = 9,
 	//drivetrain encoders.
-	leftDriveEncoder1=0,
-	leftDriveEncoder2=1,
-	rightDriveEncoder1=2,
-	rightDriveEncoder2=3,
+	leftDriveEncoder1 = 13,
+	leftDriveEncoder2 = 14,
+	rightDriveEncoder1 = 15,
+	rightDriveEncoder2 = 16,
 	
 
 	//analog sensors
