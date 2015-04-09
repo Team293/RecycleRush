@@ -1,7 +1,6 @@
 
 package org.usfirst.frc.team293.robot;
 
-import subsystems.DriveTrain;
 import subsystems.Slurper;
 import autonomous.*;
 import edu.wpi.first.wpilibj.IterativeRobot;
@@ -39,8 +38,6 @@ public class Robot extends IterativeRobot {
 
 		SmartDashboard.putData("Which Autonomous?", autonomousChooser);
 		SmartDashboard.putBoolean("Middle Auto", false);
-		
-	DriveTrain.gyroInit();	
 	}
 
 	public void autonomousInit() {
@@ -53,9 +50,8 @@ public class Robot extends IterativeRobot {
 	 * This function is called periodically during autonomous
 	 */
 	public void autonomousPeriodic() {
-		//SmartDashboard.putNumber("time", Auto.autoTimer.get());
-		//selectedAuto.run();
-		gyroCanStealer.run();
+		SmartDashboard.putNumber("time", Auto.autoTimer.get());
+		selectedAuto.run();
 	}
 
 	/**

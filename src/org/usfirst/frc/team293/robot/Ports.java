@@ -58,7 +58,7 @@ public class Ports {
 	rOpticalLimit = 15,//EDITED FROM 1
 	lToteLimit = 6,
 	rToteLimit = 9,
-	//drivetrain encoders.
+	//drivetrain
 	leftDriveEncoder1=0,
 	leftDriveEncoder2=1,
 	rightDriveEncoder1=2,

@@ -5,17 +5,15 @@ import org.usfirst.frc.team293.robot.Ports;
 import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.Gyro;
 import edu.wpi.first.wpilibj.RobotDrive;
-import edu.wpi.first.wpilibj.Talon;
 import edu.wpi.first.wpilibj.VictorSP;
 import edu.wpi.first.wpilibj.PIDController;
 import edu.wpi.first.wpilibj.PIDOutput;
 import edu.wpi.first.wpilibj.PIDSource;
 import edu.wpi.first.wpilibj.RobotDrive;
-import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 public class DriveTrain {    
-    private static final Talon leftMotor = new Talon(Ports.leftDrive);
-    private static final Talon rightMotor = new Talon(Ports.rightDrive);
+    private static final VictorSP leftMotor = new VictorSP(Ports.leftDrive);
+    private static final VictorSP rightMotor = new VictorSP(Ports.rightDrive);
 
     private static final Encoder leftEncoder = new Encoder(Ports.leftDriveEncoder1, Ports.leftDriveEncoder2);
     private static final Encoder rightEncoder = new Encoder(Ports.rightDriveEncoder1, Ports.rightDriveEncoder2);
@@ -50,7 +48,7 @@ public class DriveTrain {
 	public static void gyroDrive(double setAngle, double speed) {
 		double error = setAngle - gyro.getAngle();
 		double difference = error * .02;
-		drive.tankDrive(speed - difference, speed + difference);
+		tankDrive(speed - difference, speed + difference);
 	}
 	
 	public static void stop() {
@@ -60,25 +58,20 @@ public class DriveTrain {
 		///////////////////////////////////////////////////////////////////////////////////////////////////////
 		private static class PIDRobotDrive implements PIDOutput {
 			public void pidWrite(double output) {
-				drive.drive(0.5, output);	// use pid output to steer
+				drive.drive(-0.2, output);	// use pid output to steer
 			}
 		}
 
 		// alternatively, could also try feeding gyro into PIDController().
 		private static class PIDGyro implements PIDSource {
 			public double pidGet() {
-				SmartDashboard.putNumber("Gyro Angle",gyro.getAngle());
-				SmartDashboard.putNumber("Raw Gyro", gyro.getRate());
-				double angle = gyro.getAngle()*2;	// angle could be > 360, or -ve
+				double angle = gyro.getAngle();	// angle could be > 360, or -ve
 				angle %= 360;				// angle will be positive after modulo
 				if (angle > 180)			// range is 0 to 360
 					angle -= 360;			// range is now -180 to +180
 				angle /= 180;				// range is now -1 to +1
 				angle=direction+angle;
-				SmartDashboard.putNumber("Gyro", -angle);
 				return -angle;
-				
-				
 			}
 		}
 
@@ -99,7 +92,7 @@ public class DriveTrain {
 			pidGyro = new PIDGyro();				// contains pidGet()
 
 			// values for kP, kI, kD can be updated using setPID()
-			autoDrivePID = new PIDController(0.45, 0.0, 0.0, pidGyro, pidRobotDrive);
+			autoDrivePID = new PIDController(0.35, 0.0, 0.0, pidGyro, pidRobotDrive);
 			autoDrivePID.setContinuous(false);
 			autoDrivePID.setInputRange(-1.0, +1.0);
 			autoDrivePID.setOutputRange(-1.0, +1.0);
