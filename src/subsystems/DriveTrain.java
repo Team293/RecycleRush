@@ -88,8 +88,8 @@ public class DriveTrain {
 		}
 
 		public static void gyroInit() {
-			gyro = new Gyro(0);             // Gyro on Analog Channel 1
-			gyro.setSensitivity(0.0125); 	// ADW22307:  depends on gyro model
+			gyro = new Gyro(0);             // Gyro on Analog Channel 0
+			gyro.setSensitivity(0.0225); 	// ADW22307:  depends on gyro model
 
 	        drive.setExpiration(0.1);		// set timeout to 100ms
 			drive.setSensitivity(1.0);		// set turn radius, needs experimentation
