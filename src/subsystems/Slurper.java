@@ -12,14 +12,14 @@ public class Slurper {
 	private static final Talon lFinger = new Talon(Ports.lBelt);
 	private static final Talon rFinger = new Talon(Ports.rBelt);
 
-	private static final DigitalInput lbLimit = new DigitalInput(Ports.lbLimit);
-	private static final DigitalInput rbLimit = new DigitalInput(Ports.rbLimit);
-	private static final DigitalInput lfLimit = new DigitalInput(Ports.lfLimit);
-	private static final DigitalInput rfLimit = new DigitalInput(Ports.rfLimit);
+	public static final DigitalInput lbLimit = new DigitalInput(Ports.lbLimit);
+	public static final DigitalInput rbLimit = new DigitalInput(Ports.rbLimit);
+	public static final DigitalInput lfLimit = new DigitalInput(Ports.lfLimit);
+	public static final DigitalInput rfLimit = new DigitalInput(Ports.rfLimit);
 	private static final DigitalInput lOpticalLimit = new DigitalInput(Ports.lOpticalLimit);
 	private static final DigitalInput rOpticalLimit = new DigitalInput(Ports.rOpticalLimit);
-	public static final DigitalInput lToteLimit = new DigitalInput(Ports.lToteLimit);
-	public static final DigitalInput rToteLimit = new DigitalInput(Ports.rToteLimit);
+	private static final DigitalInput lToteLimit = new DigitalInput(Ports.lToteLimit);
+	private static final DigitalInput rToteLimit = new DigitalInput(Ports.rToteLimit);
 
 	private static final double forward = 0.5;
 	private static final double stop = 0;

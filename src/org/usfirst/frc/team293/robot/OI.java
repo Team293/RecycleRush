@@ -52,7 +52,22 @@ public class OI {
 		}
 	}
 
-	public static void controlSlurper() {		
+	public static void controlSlurper() {
+		if (Slurper.lfLimit.get()) {
+			lStrip.setOutput(true);
+		} else if (Slurper.lbLimit.get()) {
+			lStrip.setOutput(false);
+		} else {
+			lStrip.flash(true);
+		}
+		if (Slurper.rfLimit.get()) {
+			rStrip.setOutput(true);
+		} else if (Slurper.rbLimit.get()) {
+			rStrip.setOutput(false);
+		} else {
+			rStrip.flash(true);
+		}
+		
 		if (Slurper.isBack()) {
 			toggleSlurperB.setOutput(true);
 		} else if (!Slurper.isForward()) {
@@ -79,8 +94,6 @@ public class OI {
 	}
 
 	public static void controlElevator() {
-		lStrip.setOutput(Slurper.lToteLimit.get());
-		rStrip.setOutput(Slurper.rToteLimit.get());
 		elevatorUpB.setOutput(elevatorUpB.isHeld());
 		elevatorDownB.setOutput(elevatorDownB.isHeld());
 		if (softNob.get() < 0) {
