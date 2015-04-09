@@ -53,9 +53,8 @@ public class Robot extends IterativeRobot {
 	 * This function is called periodically during autonomous
 	 */
 	public void autonomousPeriodic() {
-		//SmartDashboard.putNumber("time", Auto.autoTimer.get());
-		//selectedAuto.run();
-		gyroCanStealer.run();
+		SmartDashboard.putNumber("time", Auto.autoTimer.get());
+		selectedAuto.run();
 	}
 
 	/**
@@ -68,7 +67,6 @@ public class Robot extends IterativeRobot {
 		OI.controlDriveTrain();
 		OI.controlElevator();
 		OI.controlSlurper();
-		Slurper.display();
 		win();
 	}
 
