@@ -2,6 +2,7 @@ package subsystems;
 
 import org.usfirst.frc.team293.robot.Ports;
 
+import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.Gyro;
 import edu.wpi.first.wpilibj.RobotDrive;
 import edu.wpi.first.wpilibj.VictorSP;
@@ -14,8 +15,8 @@ public class DriveTrain {
     private static final VictorSP leftMotor = new VictorSP(Ports.leftDrive);
     private static final VictorSP rightMotor = new VictorSP(Ports.rightDrive);
 
-    //private static final Encoder leftEncoder = new Encoder(Ports.leftDriveEncoder1, Ports.leftDriveEncoder2);
-    //private static final Encoder rightEncoder = new Encoder(Ports.rightDriveEncoder1, Ports.rightDriveEncoder2);
+    private static final Encoder leftEncoder = new Encoder(Ports.leftDriveEncoder1, Ports.leftDriveEncoder2);
+    private static final Encoder rightEncoder = new Encoder(Ports.rightDriveEncoder1, Ports.rightDriveEncoder2);
     public static final RobotDrive drive = new RobotDrive(leftMotor, rightMotor);
     //Underneath is all stuff for Straight drive
     private static Gyro gyro;
@@ -117,7 +118,7 @@ public class DriveTrain {
 			count=count+1;
 			return count;
 		}
-	/*	public static double getAvgDistance(){
+		public static double getAvgDistance(){
 			leftencoder =leftEncoder.get()/256*6*Math.PI;  //spread out wheel diameter 6 to make sense
 			rightencoder=rightEncoder.get()/256*6*Math.PI;
 			averageencoder=leftencoder+rightencoder/2;
@@ -127,5 +128,5 @@ public class DriveTrain {
 			leftEncoder.reset();
 			rightEncoder.reset();
 		}
-*/
+
 }

@@ -44,21 +44,26 @@ public class Ports {
 	arm0B = 8,
 	arm1B = 9,
 
-	//Digital Input
+	//Elevator
 	elevatorEncoder1 = 4,
 	elevatorEncoder2 = 5,
 	elevatorTopLimit = 8,
 	elevatorBottomLimit = 7,
-
+	//Slurpers
 	lbLimit = 12,
 	rbLimit = 10,
-	lfLimit = 2,
-	rfLimit = 0,
-	lOpticalLimit = 3,
-	rOpticalLimit = 1,
-	
+	lfLimit = 11, //EDITED FROM 2
+	rfLimit = 13,  //EDITED FROM 0
+	lOpticalLimit = 14,//EDITED FROM 3
+	rOpticalLimit = 15,//EDITED FROM 1
 	lToteLimit = 6,
 	rToteLimit = 9,
+	//drivetrain
+	leftDriveEncoder1=0,
+	leftDriveEncoder2=1,
+	rightDriveEncoder1=2,
+	rightDriveEncoder2=3,
+	
 
 	//analog sensors
 	armPot = 1,
