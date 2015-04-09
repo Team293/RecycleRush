@@ -5,6 +5,5 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 public class gyroCanStealer {
 public static void run(){
 	DriveTrain.enable();
-	DriveTrain.turnleft();
 }
 }
