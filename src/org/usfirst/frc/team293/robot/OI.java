@@ -26,13 +26,13 @@ public class OI {
 	private static final SpikeLEDButton elevator3B = new SpikeLEDButton(launchpad, Ports.elevator3BInput, Ports.elevator3BOutput);
 	private static final SpikeLEDButton elevator4B = new SpikeLEDButton(launchpad, Ports.elevator4BInput, Ports.elevator4BOutput);
 	private static final SpikeLEDButton elevator5B = new SpikeLEDButton(launchpad, Ports.elevator5BInput, Ports.elevator5BOutput);
-	private static final SpikeButton canOn2TotesB = new SpikeButton(leftJoystick, Ports.canOn2TotesB);
+	
 	private static final SpikeLEDButton elevatorDownB = new SpikeLEDButton(launchpad, Ports.elevatorDownB, Ports.elevatorDownBOutput);
 	private static final SpikeLEDButton elevatorUpB = new SpikeLEDButton(launchpad, Ports.elevatorUpB, Ports.elevatorUpBOutput);
+
 	private static final SpikeButton joyElevatorDownB = new SpikeButton(rightJoystick, 8);
 	private static final SpikeButton joyElevatorUpB = new SpikeButton(rightJoystick, 9);
 	private static final SpikeButton oneToteB = new SpikeButton(rightJoystick, Ports.trigger);
-	private static boolean b5wasHeld = false;
 
 	private static final SpikeButton slurperManualB = new SpikeButton(launchpad, Ports.lever);
 	private static final SpikeLEDButton toggleSlurperB = new SpikeLEDButton(launchpad, Ports.toggleSlurperBInput, Ports.toggleSlurperBOutput);
@@ -108,14 +108,9 @@ public class OI {
 				Elevator.setPresetPosition(3);
 			} else if (elevator4B.isBumped()) {
 				Elevator.setPresetPosition(4);
-			} else if (canOn2TotesB.isBumped()) {
+			} else if (elevator5B.isBumped()) {
 				Elevator.setPresetPosition(5);
 			}
-
-			if (elevator5B.isHeld()) {
-				b5wasHeld = true;
-			}
-			SmartDashboard.putBoolean("5BwasHeld", b5wasHeld);
 		}
 		Elevator.periodicPControl();
 
