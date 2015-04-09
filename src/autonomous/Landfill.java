@@ -22,7 +22,7 @@ public class Landfill extends Auto{
 		} else if (autoTimer.get() < deployT) {
 			Elevator.setPresetPosition(1);
 			SmartDashboard.putString("mode", "deploying");
-		} else if (autoTimer.get() < driveT) {
+		} else if (autoTimer.get() < backupT) {
 			DriveTrain.tankDrive(-driveSpeed, -driveSpeed);
 			SmartDashboard.putString("mode", "driving");
 		} else {
