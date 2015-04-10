@@ -18,8 +18,8 @@ public class Slurper {
 	public static final DigitalInput rfLimit = new DigitalInput(Ports.rfLimit);
 	private static final DigitalInput lOpticalLimit = new DigitalInput(Ports.lOpticalLimit);
 	private static final DigitalInput rOpticalLimit = new DigitalInput(Ports.rOpticalLimit);
-	private static final DigitalInput lToteLimit = new DigitalInput(Ports.lToteLimit);
-	private static final DigitalInput rToteLimit = new DigitalInput(Ports.rToteLimit);
+	public static final DigitalInput lToteLimit = new DigitalInput(Ports.lToteLimit);
+	public static final DigitalInput rToteLimit = new DigitalInput(Ports.rToteLimit);
 
 	private static final double forward = 0.5;
 	private static final double stop = 0;

@@ -26,7 +26,7 @@ public class OI {
 	private static final SpikeLEDButton elevator3B = new SpikeLEDButton(launchpad, Ports.elevator3BInput, Ports.elevator3BOutput);
 	private static final SpikeLEDButton elevator4B = new SpikeLEDButton(launchpad, Ports.elevator4BInput, Ports.elevator4BOutput);
 	private static final SpikeLEDButton elevator5B = new SpikeLEDButton(launchpad, Ports.elevator5BInput, Ports.elevator5BOutput);
-	
+
 	private static final SpikeLEDButton elevatorDownB = new SpikeLEDButton(launchpad, Ports.elevatorDownB, Ports.elevatorDownBOutput);
 	private static final SpikeLEDButton elevatorUpB = new SpikeLEDButton(launchpad, Ports.elevatorUpB, Ports.elevatorUpBOutput);
 
@@ -53,21 +53,26 @@ public class OI {
 	}
 
 	public static void controlSlurper() {
-		if (Slurper.lfLimit.get()) {
-			lStrip.setOutput(true);
-		} else if (Slurper.lbLimit.get()) {
-			lStrip.setOutput(false);
+		if (SmartDashboard.getBoolean("Landfill")) {
+			lStrip.setOutput(Slurper.lToteLimit.get());
+			rStrip.setOutput(Slurper.rToteLimit.get());
 		} else {
-			lStrip.flash(true);
+			if (Slurper.lfLimit.get()) {
+				lStrip.setOutput(true);
+			} else if (Slurper.lbLimit.get()) {
+				lStrip.setOutput(false);
+			} else {
+				lStrip.flash(true);
+			}
+			if (Slurper.rfLimit.get()) {
+				rStrip.setOutput(true);
+			} else if (Slurper.rbLimit.get()) {
+				rStrip.setOutput(false);
+			} else {
+				rStrip.flash(true);
+			}
 		}
-		if (Slurper.rfLimit.get()) {
-			rStrip.setOutput(true);
-		} else if (Slurper.rbLimit.get()) {
-			rStrip.setOutput(false);
-		} else {
-			rStrip.flash(true);
-		}
-		
+
 		if (Slurper.isBack()) {
 			toggleSlurperB.setOutput(true);
 		} else if (!Slurper.isForward()) {
@@ -75,12 +80,13 @@ public class OI {
 		} else {
 			toggleSlurperB.setOutput(false);
 		}
-		
+
 		if (slurperManualB.isHeld()) {
 			Slurper.manualMove(toggleSlurperB.isBumped());
 		} else {
 			Slurper.autoMove();
 		}
+
 	}
 
 	public static void monitorElevatorB(SpikeLEDButton button, double position) {

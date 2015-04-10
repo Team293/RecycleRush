@@ -39,7 +39,8 @@ public class Robot extends IterativeRobot {
 
 		SmartDashboard.putData("Which Autonomous?", autonomousChooser);
 		SmartDashboard.putBoolean("Middle Auto", false);
-		
+		SmartDashboard.putBoolean("Landfill", false);
+
 	DriveTrain.gyroInit();	
 	}
 

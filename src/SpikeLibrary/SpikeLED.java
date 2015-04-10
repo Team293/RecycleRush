@@ -15,6 +15,7 @@ public class SpikeLED {
 	public SpikeLED(Joystick joystick, int port) {
 		this.joystick = joystick;
 		this.port = port;
+		timer.start();
 	}
 
 	public void setOutput(boolean state) {
