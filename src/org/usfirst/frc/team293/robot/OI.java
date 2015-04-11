@@ -37,7 +37,7 @@ public class OI {
 	private static final SpikeButton slurperManualB = new SpikeButton(launchpad, Ports.lever);
 	private static final SpikeLEDButton toggleSlurperB = new SpikeLEDButton(launchpad, Ports.toggleSlurperBInput, Ports.toggleSlurperBOutput);
 
-	private static final SpikeAxis softNob = new SpikeAxis(launchpad, Ports.nobA);
+	private static final SpikeAxis manualNob = new SpikeAxis(launchpad, Ports.nobA);
 
 	private static final SpikeButton slowDriveB = new SpikeButton(leftJoystick, Ports.trigger);
 
@@ -102,11 +102,6 @@ public class OI {
 	public static void controlElevator() {
 		elevatorUpB.setOutput(elevatorUpB.isHeld());
 		elevatorDownB.setOutput(elevatorDownB.isHeld());
-		if (softNob.get() < 0) {
-			Elevator.setSoftMode(true);
-		} else {
-			Elevator.setSoftMode(false);
-		}
 		if (elevatorUpB.isHeld() || elevatorDownB.isHeld() || joyElevatorUpB.isHeld() || joyElevatorDownB.isHeld()) {
 			if (elevatorUpB.isHeld() || joyElevatorUpB.isHeld()) {
 				Elevator.updateManualPosition(true);
@@ -130,7 +125,12 @@ public class OI {
 				Elevator.setPresetPosition(5);
 			}
 		}
-		Elevator.periodicPControl();
+
+		if (manualNob.get() > 0.638) {
+			Elevator.periodicPControl();
+		} else {
+			Elevator.move(manualNob.get() * -1.297);
+		}
 
 		monitorElevatorB(elevator0B, Elevator.positions[0]);
 		monitorElevatorB(elevator1B, Elevator.positions[1]);
