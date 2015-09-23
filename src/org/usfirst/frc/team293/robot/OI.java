@@ -45,7 +45,7 @@ public class OI {
 	private static final SpikeLED rStrip = new SpikeLED(launchpad, Ports.rIndicatorStrip);
 
 	public static void controlDriveTrain() {
-		if (slowDriveB.isHeld()) {
+		if (slowDriveB.isToggled()) {
 			DriveTrain.slowDrive(-leftJoystick.getY(), -rightJoystick.getY());
 		} else {
 			DriveTrain.tankDrive(-leftJoystick.getY(), -rightJoystick.getY());
@@ -126,11 +126,7 @@ public class OI {
 			}
 		}
 
-		if (manualNob.get() > 0.638) {
-			Elevator.periodicPControl();
-		} else {
-			Elevator.move(manualNob.get() * -1.297);
-		}
+		Elevator.periodicPControl();
 
 		monitorElevatorB(elevator0B, Elevator.positions[0]);
 		monitorElevatorB(elevator1B, Elevator.positions[1]);
